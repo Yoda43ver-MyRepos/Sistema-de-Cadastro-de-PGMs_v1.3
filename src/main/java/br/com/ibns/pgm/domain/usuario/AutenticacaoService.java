@@ -7,15 +7,14 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 
-//Esta classe contem a lógica de autenticação  no projeto.
+
 @Service
-public class AuthenticacaoService implements UserDetailsService {
+public class AutenticacaoService implements UserDetailsService {
 
     @Autowired
     private UsuarioRepository repository;
 
 
-    // O Spring chama este  método  de forma automática ao efetuarmos o login.
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return repository.findByLogin(username);
