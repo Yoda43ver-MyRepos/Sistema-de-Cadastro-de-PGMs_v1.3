@@ -1,4 +1,4 @@
-package br.com.ibns.pgm.infra;
+package br.com.ibns.pgm.infra.exception;
 
 import org.springframework.validation.FieldError;
 import jakarta.persistence.EntityNotFoundException;
