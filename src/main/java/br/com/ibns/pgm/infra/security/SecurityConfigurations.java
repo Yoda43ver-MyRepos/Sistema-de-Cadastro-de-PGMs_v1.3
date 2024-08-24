@@ -25,22 +25,14 @@ public class SecurityConfigurations {
                 .build();
     }
 
-
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
         return configuration.getAuthenticationManager();
     }
 
-
-/*Configura o Spring para usar o Bcrypt como decoder de hashing de senha.
-   ****  ATENÇÃO  ****
-   É necessario implementar a interface 'UserDetails' e seus metodos na classe Usuario.
-   Desta forma o Spring Security poderá identificar a classe usuário do nosso projeto
- */
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
-
 
 }
