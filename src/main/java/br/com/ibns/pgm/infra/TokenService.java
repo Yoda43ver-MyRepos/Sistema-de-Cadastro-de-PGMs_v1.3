@@ -22,7 +22,7 @@ public class TokenService {
 
     //O metodo abaixo retorna uma String, que representa o token a ser gerado
     public String gerarToken(Usuario usuario) {
-        try {
+             try {
             var algorithm = Algorithm.HMAC256(secret);
             return JWT.create()
                     .withIssuer("API Cad_PGM")
@@ -36,16 +36,14 @@ public class TokenService {
     }
 
 
-
     public String getSubject(String tokenJWT){
         try {
-            var algorithm = Algorithm.HMAC256("12345678");
+            var algorithm = Algorithm.HMAC256(secret);
             return JWT.require(algorithm)
                     .withIssuer("API Cad_PGM")
                     .build()
                     .verify(tokenJWT)
                     .getSubject();
-
         } catch (JWTVerificationException exception){
             throw new RuntimeException("Token JWT inválido ou expirado");
         }
