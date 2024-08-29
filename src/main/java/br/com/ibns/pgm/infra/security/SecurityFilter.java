@@ -25,16 +25,21 @@ public class SecurityFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        System.out.println("Chamando filtro");
+
         var tokenJWT = recuperarToken(request);
         //Somente chame o tokenService.getSubject(tokenJWT)
         //Se houver um token
         if (tokenJWT != null) {
+            System.out.println("Entrei no if(toeknJWT != null) doFilterInternal: "+ tokenJWT);
             var subject = tokenService.getSubject(tokenJWT);
             var usuario = repository.findByLogin(subject);
 
             //Diz para o Spring autenticar o usuario.
             var authentication = new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authentication);
+            System.out.println("LOGADO NA REQUISIÇÃO");
+
         }
 
         //esta linha abaixo chama o próximo filtro.
@@ -44,7 +49,6 @@ public class SecurityFilter extends OncePerRequestFilter {
     private String recuperarToken(HttpServletRequest request) {
         var authorizationHeader = request.getHeader("Authorization");
         if (authorizationHeader != null) {
-            System.out.println("exception: " + authorizationHeader);
             return authorizationHeader.replace("Bearer ", "");
         }
         return null;
