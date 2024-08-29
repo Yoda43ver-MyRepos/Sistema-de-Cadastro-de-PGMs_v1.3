@@ -3,6 +3,8 @@ Aplicações web usando Spring Boot, criação de API REST e CRUD. Bibliotecas: 
 
 ![Captura de tela 2024-08-06 131422](https://github.com/user-attachments/assets/f6ef8d4c-25db-4ab3-8de5-efcfe7b8f0da)
 
+![Autorizacao_Spring Security](https://github.com/user-attachments/assets/29bcc010-7dfe-451c-a6c6-e311a710febc)
+
 
 <b>Tecnologias:</b>
 
