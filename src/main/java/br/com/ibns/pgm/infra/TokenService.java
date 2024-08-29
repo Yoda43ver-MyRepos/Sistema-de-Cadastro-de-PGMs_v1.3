@@ -43,13 +43,11 @@ public class TokenService {
                     .verify(tokenJWT)
                     .getSubject();
         } catch (JWTVerificationException exception){
-            System.out.println("Token recebido:" +tokenJWT);
             throw new RuntimeException("Token JWT inválido ou expirado");
         }
     }
 
     private Instant dataExpiracao() {
-       // return LocalDateTime.now().plusHours(8).toInstant(ZoneOffset.of("-2:00"));
         ZoneOffset zoneOffset = ZoneOffset.of("Z"); // Criando um ZoneOffset UTC
         //plusHours(5) representa : expira em 2 horas.
         return LocalDateTime.now().plusHours(5).atOffset(zoneOffset).toInstant();
